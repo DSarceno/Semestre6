@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.19)  14 AUG 2021 15:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.19)  14 AUG 2021 18:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1364,7 +1364,14 @@ s
 LaTeX Warning: Unused global option(s):
     [letterpage].
 
-No file Tarea2.aux.
+(./Tarea2.aux
+LaTeX Info: Redefining \. on input line 22.
+LaTeX Info: Redefining \% on input line 22.
+
+
+LaTeX Warning: Label `XOR' multiply defined.
+
+)
 \openout1 = `Tarea2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -1383,6 +1390,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 
@@ -1464,6 +1472,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
 LaTeX Info: Redefining \nameref on input line 17.
+
+(./Tarea2.out) (./Tarea2.out)
 \@outlinefile=\write6
 \openout6 = `Tarea2.out'.
 
@@ -1519,8 +1529,8 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 17
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 (./Header_original.tex
-</home/diego/Documents/Licenciatura/LatexBasic/ECFM.pdf, id=7, 521.16649pt x 52
-1.22568pt>
+</home/diego/Documents/Licenciatura/LatexBasic/ECFM.pdf, id=23, 521.16649pt x 5
+21.22568pt>
 File: /home/diego/Documents/Licenciatura/LatexBasic/ECFM.pdf Graphic file (type
  pdf)
 <use /home/diego/Documents/Licenciatura/LatexBasic/ECFM.pdf>
@@ -1536,8 +1546,8 @@ Overfull \hbox (2.31259pt too wide) in paragraph at lines 22--22
 Overfull \vbox (17.44177pt too high) detected at line 22
  []
 
-</home/diego/Documents/Licenciatura/LatexBasic/USAC.pdf, id=8, 813.77554pt x 81
-4.34445pt>
+</home/diego/Documents/Licenciatura/LatexBasic/USAC.pdf, id=24, 813.77554pt x 8
+14.34445pt>
 File: /home/diego/Documents/Licenciatura/LatexBasic/USAC.pdf Graphic file (type
  pdf)
 <use /home/diego/Documents/Licenciatura/LatexBasic/USAC.pdf>
@@ -1584,20 +1594,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
  []
 
 
-Overfull \hbox (161.4766pt too wide) in paragraph at lines 27--28
+Overfull \hbox (161.47661pt too wide) in paragraph at lines 27--28
 [][] 
  []
 
-) (./contentTarea2.tex) [1
+) (./contentTarea2.tex
+<Images/XOR.png, id=28, 974.64125pt x 664.4825pt>
+File: Images/XOR.png Graphic file (type png)
+<use Images/XOR.png>
+Package pdftex.def Info: Images/XOR.png  used on input line 34.
+(pdftex.def)             Requested size: 243.65971pt x 166.12021pt.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/diego/Documents/Lice
-nciatura/LatexBasic/ECFM.pdf> </home/diego/Documents/Licenciatura/LatexBasic/US
-AC.pdf
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}pdfTeX warning (ext4): desti
+nation with the same identifier (name{table.1}) has been already used, duplicat
+e ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.42 
+     pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.42 
+      </home/diego/Documents/Licenciatura/LatexBasic/ECFM.pdf> </home/diego/Doc
+uments/Licenciatura/LatexBasic/USAC.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file /home/diego/Documents/Licenciatura/Late
 xBasic/USAC.pdf): PDF inclusion: multiple pdfs with page group included in a si
 ngle page
->]
+> <./Images/XOR.png>]
+<Images/AND.png, id=46, 1019.81pt x 654.445pt>
+File: Images/AND.png Graphic file (type png)
+<use Images/AND.png>
+Package pdftex.def Info: Images/AND.png  used on input line 46.
+(pdftex.def)             Requested size: 407.91678pt x 261.77336pt.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+Make it at least 13.59999pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[2pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.29 \end{titlepage}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{table.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.29 \end{titlepage}
+                     <./Images/AND.png>]
 
 FiXme Summary: Number of notes: 0,
 (FiXme)        Number of warnings: 0,
@@ -1605,39 +1658,39 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 26.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 26.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 30.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 30.
 (./Tarea2.aux
 LaTeX Info: Redefining \. on input line 22.
 LaTeX Info: Redefining \% on input line 22.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 26.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 26.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 30.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 30.
+Package rerunfilecheck Info: File `Tarea2.out' has not changed.
+(rerunfilecheck)             Checksum: F4876123B0F994946993FB84446B3D52;233.
 
 
-Package rerunfilecheck Warning: File `Tarea2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: Checksums for `Tarea2.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  10018276824C3F499D08669238B5B3E4;109.
  ) 
 Here is how much of TeX's memory you used:
- 50135 strings out of 481239
- 1221413 string characters out of 5920376
- 1845221 words of memory out of 5000000
- 64589 multiletter control sequences out of 15000+600000
- 541017 words of font info for 60 fonts, out of 8000000 for 9000
+ 50181 strings out of 481239
+ 1221945 string characters out of 5920376
+ 1849221 words of memory out of 5000000
+ 64617 multiletter control sequences out of 15000+600000
+ 541662 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,15n,100p,910b,917s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,15n,100p,910b,933s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on Tarea2.pdf (1 page, 110608 bytes).
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Tarea2.pdf (2 pages, 275989 bytes).
 PDF statistics:
- 36 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
