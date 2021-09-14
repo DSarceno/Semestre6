@@ -1,0 +1,10 @@
+Diego Sarceño   201900109
+  TAREA TERMODINÁMICA
+
+1) El proceso es claramente adiabático y se tiene, mediante un ajuste realizado
+   con GNUPLOT, que el coeficiente Gamma = 1.309, el cual es muy aproximado al
+   7/5. En la gráfica "ajuste.pdf" se puede ver la relación entre el ajuste
+   y los datos. (programa "ajuste.gp")
+
+2) En 1.6 minutos, dada la gráfica "inciso2.pdf", es claro que la temperatura
+   se mantiene constante en el intervalo mostradp. (programa "graph.py")
