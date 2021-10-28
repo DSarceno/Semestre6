@@ -85,15 +85,12 @@ void loop() {
 	estado_drive = digitalRead(PUSH_DRIVE);
 	estado_rev = digitalRead(PUSH_REV);
 	// condicionales
-	delay(500);
+	delay(500); // LECTURA DE ESTADOS
 	if (estado_neutro == 1) {
-		Serial.println("Neutro");
 		neutro();
 	} else if (estado_drive == 1) {
-		Serial.println("Drive");
 		drive();
 	} else if (estado_rev == 1) {
-		Serial.println("Reversa");
 		reversa();
 	}
 	delay(100);
@@ -102,7 +99,7 @@ void loop() {
 
 // NÚMEROS Y LETRAS EN EL DISPLAY DE 7 SEGMENTOS
 
-void displayNeutro() {
+void displayNeutro() { // FUNCION DISPLAY NEUTRO
 	digitalWrite(A7S,0);
 	digitalWrite(B7S,1);
 	digitalWrite(C7S,1);
@@ -112,7 +109,7 @@ void displayNeutro() {
 	digitalWrite(G7S,1);
 }
 
-void display1() {
+void display1() { // FUNCION DISPLAY 1
 	digitalWrite(A7S,0);
 	digitalWrite(B7S,1);
 	digitalWrite(C7S,1);
@@ -122,7 +119,7 @@ void display1() {
 	digitalWrite(G7S,0);
 }
 
-void display2() {
+void display2() { // FUNCION DISPLAY 2
 	digitalWrite(A7S,1);
 	digitalWrite(B7S,1);
 	digitalWrite(C7S,0);
@@ -132,7 +129,7 @@ void display2() {
 	digitalWrite(G7S,1);
 }
 
-void display3() {
+void display3() { // FUNCION DISPLAY 3
 	digitalWrite(A7S,1);
 	digitalWrite(B7S,1);
 	digitalWrite(C7S,1);
@@ -142,7 +139,7 @@ void display3() {
 	digitalWrite(G7S,1);
 }
 
-void display4() {
+void display4() { // FUNCION DISPLAY 4
 	digitalWrite(A7S,0);
 	digitalWrite(B7S,1);
 	digitalWrite(C7S,1);
@@ -153,7 +150,7 @@ void display4() {
 }
 
 
-void displayA() {
+void displayA() { // FUNCION DISPLAY REVERSA
 	digitalWrite(A7S,1);
 	digitalWrite(B7S,1);
 	digitalWrite(C7S,1);
@@ -166,23 +163,23 @@ void displayA() {
 
 // FUNCIONES NECESARIAS (BUCLES)
 
-void neutro() {
+void neutro() { // FUNCION NEUTRO
 	displayNeutro();
 	while (estado == 0){
 		if (digitalRead(PUSH_DRIVE) == 1) {
-			estado = digitalRead(PUSH_DRIVE);
+			estado = digitalRead(PUSH_DRIVE);  // CAMBIO A DRIVE
 		} else if (digitalRead(PUSH_REV) == 1) {
-			estado = digitalRead(PUSH_REV);
+			estado = digitalRead(PUSH_REV);  // CAMBIO A REVERSA
 		}
 	}
 	estado = 0;
 }
 
-void reversa() {
+void reversa() { // FUNCION REVERSA
 	displayA();
 	digitalWrite(DERECHA,0);
 	digitalWrite(IZQUIERDA,1);
-	analogWrite(PWM,510);
+	analogWrite(PWM,510);  // VELOCIDAD FIJA DEL MOTOR A UN 50% EN DIRECCIÓN IZQUIERDA (NEGATIVA).
 	while (estado == 0) {
 		estado = digitalRead(PUSH_NEUTRO);
 	}
@@ -190,24 +187,21 @@ void reversa() {
 	analogWrite(PWM,0);
 }
 
-void drive() {
+
+void drive() { // FUNCION DRIVE
 	digitalWrite(DERECHA,1);
 	digitalWrite(IZQUIERDA,0);
 	while (estado == 0) {
 			pot = analogRead(POT);
 			Serial.println(pot);
-			analogWrite(PWM,pot/2);
+			analogWrite(PWM,pot/2);  // CAMBIO DE VELOCIDAD DEL MOTOR MEDIANTE LAS LECTURAS DEL POTENCIOMETRO
 			if (pot <= 255) {
-				Serial.println("Vel 1");
 				display1();
 			} else if (pot > 255 && pot <= 510) {
-				Serial.println("Vel 2");
 				display2();
 			} else if (pot > 510 && pot <= 765) {
-				Serial.println("Vel 3");
 				display3();
 			} else if (pot > 765) {
-				Serial.println("Vel 4");
 				display4();
 			}
 			estado = digitalRead(PUSH_NEUTRO);
