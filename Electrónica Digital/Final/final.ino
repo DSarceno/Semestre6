@@ -42,7 +42,8 @@
 #define PUSH_DRIVE_AUTO A3
 
 
-// MATRICES 
+// MATRIZ PARA EL DISPLAY DE 7 SEGMENTOS
+// Lógica negada 
 bool display[10][7] = {{0,0,0,0,0,0,1}, // 0
 			{1,0,0,1,1,1,1}, // 1
 			{1,1,0,1,1,0,1}, // 2
@@ -110,6 +111,7 @@ void loop() {
 void neutro() {
 	digitalWrite(DERECHA,0);
 	while (estado == 0) {
+		// ESTADO NEUTRO MARCADO POR 00 EN LOS DISPLAY
 		digitalWrite(UNIDADES,HIGH);
 		digitalWrite(DECENAS,LOW);
 		digitoU(0);
@@ -118,6 +120,7 @@ void neutro() {
 		digitalWrite(DECENAS,HIGH);
 		digitoD(0);
 		delay(100);
+		// Cambio de estado
 		if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
 			estado = digitalRead(PUSH_DRIVE_MANUAL);
 		} else if (digitalRead(PUSH_DRIVE_AUTO) == 1) {
@@ -133,7 +136,7 @@ void drive_manual() {
 			pot = analogRead(POT);
 			Serial.println(pot);
 			analogWrite(PWM,pot/2);  // CAMBIO DE VELOCIDAD DEL MOTOR MEDIANTE LAS LECTURAS DEL POTENCIOMETRO
-			if (pot <= 205) {
+			if (pot <= 205) { // Condicionales dentro del bucle para la multiplexación
 				noTone(ALARM);
 				// 01
 				digitalWrite(UNIDADES,HIGH);
@@ -203,10 +206,10 @@ void drive_manual() {
 void drive_auto() {
 	digitalWrite(DERECHA,1);
 	while (estado == 0) {
-		for (int d = 0; d < 10; d++) {
-			for (int u = 0; u < 10; u++) {
+		for (int d = 0; d < 10; d++) { // Decenas
+			for (int u = 0; u < 10; u++) { // Unidades
 				Serial.println(d*10 + u);
-				for (int c = 1; c < 11; c++) {
+				for (int c = 1; c < 11; c++) { // Repetición en cada número, para disminuir el timepo se baja el límite superior de "c"
 					digitalWrite(UNIDADES,HIGH);
 					digitalWrite(DECENAS,LOW);
 					digitoU(u);
@@ -216,7 +219,7 @@ void drive_auto() {
 					digitoD(d);
 					delay(100);
 					// cambio de estado
-					if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+					if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) { // Corta el bucle interno al tener una señal de un push
 						break;
 					}
 				}
@@ -224,11 +227,11 @@ void drive_auto() {
 				if ((d*10 + u) >= 85) {
 					tone(ALARM,2000);
 				}
-				if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+				if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) { // Corta el bucle de las unidades al tener la señal de un push
 					break;
 				}
 			}
-			if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+			if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) { // Corta el bucle de las decenas
 				break;
 			}	
 		}
@@ -246,14 +249,14 @@ void drive_auto() {
 
 
 // FUNCIONES EXTRAS
-void digitoU(int x) {
+void digitoU(int x) { // Función para mostrar el dígito de las unidades
 	for (int a = 0; a < 8; a++) {
 		digitalWrite(a + 4, display[x][a]);
 	}
 }
 
 void digitoD(int y) {
-	for (int b = 0; b < 8; b++) {
+	for (int b = 0; b < 8; b++) { // Función para mostrar el dígito de las decenas
 		digitalWrite(b + 4, display[y][b]);
 	}
 }
