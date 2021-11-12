@@ -127,15 +127,65 @@ void drive_manual() {
 			analogWrite(PWM,pot/2);  // CAMBIO DE VELOCIDAD DEL MOTOR MEDIANTE LAS LECTURAS DEL POTENCIOMETRO
 			if (pot <= 205) {
 				// 01
+				while (pot <= 205) {
+					digitalWrite(UNIDADES,HIGH);
+					digitalWrite(DECENAS,LOW);
+					digitoU(1);
+					delay(100);
+					digitalWrite(UNIDADES,LOW);
+					digitalWrite(DECENAS,HIGH);
+					digitoD(0);
+					delay(100);
+				}
 			} else if (pot > 205 && pot <= 409) {
 				// 02
+				while (pot > 205 && pot <= 409) {
+					digitalWrite(UNIDADES,HIGH);
+					digitalWrite(DECENAS,LOW);
+					digitoU(2);
+					delay(100);
+					digitalWrite(UNIDADES,LOW);
+					digitalWrite(DECENAS,HIGH);
+					digitoD(0);
+					delay(100);
+				}
 			} else if (pot > 409 && pot <= 614) {
 				// 03
+				while (pot > 409 && pot <= 614) {
+					digitalWrite(UNIDADES,HIGH);
+					digitalWrite(DECENAS,LOW);
+					digitoU(3);
+					delay(100);
+					digitalWrite(UNIDADES,LOW);
+					digitalWrite(DECENAS,HIGH);
+					digitoD(0);
+					delay(100);
+				}
 			} else if (pot > 614 && pot <= 818) {
 				// 04
+				while (pot > 614 && pot <= 818) {
+					digitalWrite(UNIDADES,HIGH);
+					digitalWrite(DECENAS,LOW);
+					digitoU(4);
+					delay(100);
+					digitalWrite(UNIDADES,LOW);
+					digitalWrite(DECENAS,HIGH);
+					digitoD(0);
+					delay(100);
+				}
 			} else if (pot > 818) {
 				tone(ALARM,2000);
 				// 05
+				while (pot > 818) {
+					digitalWrite(UNIDADES,HIGH);
+					digitalWrite(DECENAS,LOW);
+					digitoU(5);
+					delay(100);
+					digitalWrite(UNIDADES,LOW);
+					digitalWrite(DECENAS,HIGH);
+					digitoD(0);
+					delay(100);
+				}
 			}
 			
 			// cambio de estado
@@ -153,9 +203,8 @@ void drive_auto() {
 	digitalWrite(DERECHA,1);
 	while (estado == 0) {
 		for (int d = 0; d < 10; d++) {
-			digitoD(d);
 			for (int u = 0; u < 10; u++) {
-				digitoU(u);
+				Serial.println(d*10 + u);
 				for (int c = 1; c < 11; c++) {
 					digitalWrite(UNIDADES,HIGH);
 					digitalWrite(DECENAS,LOW);
@@ -163,18 +212,18 @@ void drive_auto() {
 					delay(100);
 					digitalWrite(UNIDADES,LOW);
 					digitalWrite(DECENAS,HIGH);
+					digitoD(d);
 					delay(100);
+					// cambio de estado
+					if (digitalRead(PUSH_NEUTRO) == 1) {
+						estado = digitalRead(PUSH_NEUTRO);
+					} else if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+						estado = digitalRead(PUSH_DRIVE_MANUAL);
+					}
 				}
-				Serial.println(d*10 + u);
 				analogWrite(PWM, ((100*d) + (10*u))/2);
 				if ((d*10 + u) >= 85) {
 					tone(ALARM,2000);
-				}
-				// cambio de estado
-				if (digitalRead(PUSH_NEUTRO) == 1) {
-					estado = digitalRead(PUSH_NEUTRO);
-				} else if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
-					estado = digitalRead(PUSH_DRIVE_MANUAL);
 				}
 			}	
 		}
