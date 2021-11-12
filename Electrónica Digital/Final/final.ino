@@ -110,6 +110,14 @@ void loop() {
 void neutro() {
 	digitalWrite(DERECHA,0);
 	while (estado == 0) {
+		digitalWrite(UNIDADES,HIGH);
+		digitalWrite(DECENAS,LOW);
+		digitoU(0);
+		delay(100);
+		digitalWrite(UNIDADES,LOW);
+		digitalWrite(DECENAS,HIGH);
+		digitoD(0);
+		delay(100);
 		if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
 			estado = digitalRead(PUSH_DRIVE_MANUAL);
 		} else if (digitalRead(PUSH_DRIVE_AUTO) == 1) {
@@ -126,68 +134,61 @@ void drive_manual() {
 			Serial.println(pot);
 			analogWrite(PWM,pot/2);  // CAMBIO DE VELOCIDAD DEL MOTOR MEDIANTE LAS LECTURAS DEL POTENCIOMETRO
 			if (pot <= 205) {
+				noTone(ALARM);
 				// 01
-				while (pot <= 205) {
-					digitalWrite(UNIDADES,HIGH);
-					digitalWrite(DECENAS,LOW);
-					digitoU(1);
-					delay(100);
-					digitalWrite(UNIDADES,LOW);
-					digitalWrite(DECENAS,HIGH);
-					digitoD(0);
-					delay(100);
-				}
+				digitalWrite(UNIDADES,HIGH);
+				digitalWrite(DECENAS,LOW);
+				digitoU(1);
+				delay(100);
+				digitalWrite(UNIDADES,LOW);
+				digitalWrite(DECENAS,HIGH);
+				digitoD(0);
+				delay(100);
 			} else if (pot > 205 && pot <= 409) {
+				noTone(ALARM);
 				// 02
-				while (pot > 205 && pot <= 409) {
-					digitalWrite(UNIDADES,HIGH);
-					digitalWrite(DECENAS,LOW);
-					digitoU(2);
-					delay(100);
-					digitalWrite(UNIDADES,LOW);
-					digitalWrite(DECENAS,HIGH);
-					digitoD(0);
-					delay(100);
-				}
+				digitalWrite(UNIDADES,HIGH);
+				digitalWrite(DECENAS,LOW);
+				digitoU(2);
+				delay(100);
+				digitalWrite(UNIDADES,LOW);
+				digitalWrite(DECENAS,HIGH);
+				digitoD(0);
+				delay(100);
 			} else if (pot > 409 && pot <= 614) {
+				noTone(ALARM);
 				// 03
-				while (pot > 409 && pot <= 614) {
-					digitalWrite(UNIDADES,HIGH);
-					digitalWrite(DECENAS,LOW);
-					digitoU(3);
-					delay(100);
-					digitalWrite(UNIDADES,LOW);
-					digitalWrite(DECENAS,HIGH);
-					digitoD(0);
-					delay(100);
-				}
+				digitalWrite(UNIDADES,HIGH);
+				digitalWrite(DECENAS,LOW);
+				digitoU(3);
+				delay(100);
+				digitalWrite(UNIDADES,LOW);
+				digitalWrite(DECENAS,HIGH);
+				digitoD(0);
+				delay(100);
 			} else if (pot > 614 && pot <= 818) {
+				noTone(ALARM);
 				// 04
-				while (pot > 614 && pot <= 818) {
-					digitalWrite(UNIDADES,HIGH);
-					digitalWrite(DECENAS,LOW);
-					digitoU(4);
-					delay(100);
-					digitalWrite(UNIDADES,LOW);
-					digitalWrite(DECENAS,HIGH);
-					digitoD(0);
-					delay(100);
-				}
+				digitalWrite(UNIDADES,HIGH);
+				digitalWrite(DECENAS,LOW);
+				digitoU(4);
+				delay(100);
+				digitalWrite(UNIDADES,LOW);
+				digitalWrite(DECENAS,HIGH);
+				digitoD(0);
+				delay(100);
 			} else if (pot > 818) {
 				tone(ALARM,2000);
 				// 05
-				while (pot > 818) {
-					digitalWrite(UNIDADES,HIGH);
-					digitalWrite(DECENAS,LOW);
-					digitoU(5);
-					delay(100);
-					digitalWrite(UNIDADES,LOW);
-					digitalWrite(DECENAS,HIGH);
-					digitoD(0);
-					delay(100);
-				}
+				digitalWrite(UNIDADES,HIGH);
+				digitalWrite(DECENAS,LOW);
+				digitoU(5);
+				delay(100);
+				digitalWrite(UNIDADES,LOW);
+				digitalWrite(DECENAS,HIGH);
+				digitoD(0);
+				delay(100);
 			}
-			
 			// cambio de estado
 			if (digitalRead(PUSH_NEUTRO) == 1) {
 				estado = digitalRead(PUSH_NEUTRO);
@@ -215,17 +216,27 @@ void drive_auto() {
 					digitoD(d);
 					delay(100);
 					// cambio de estado
-					if (digitalRead(PUSH_NEUTRO) == 1) {
-						estado = digitalRead(PUSH_NEUTRO);
-					} else if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
-						estado = digitalRead(PUSH_DRIVE_MANUAL);
+					if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+						break;
 					}
 				}
 				analogWrite(PWM, ((100*d) + (10*u))/2);
 				if ((d*10 + u) >= 85) {
 					tone(ALARM,2000);
 				}
+				if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+					break;
+				}
+			}
+			if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+				break;
 			}	
+		}
+		// cambio de estado
+		if (digitalRead(PUSH_NEUTRO) == 1) {
+			estado = digitalRead(PUSH_NEUTRO);
+		} else if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+			estado = digitalRead(PUSH_DRIVE_MANUAL);
 		}
 	}
 	estado = 0;
