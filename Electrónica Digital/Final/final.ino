@@ -33,9 +33,9 @@
 #define DERECHA 2
 #define PWM 3
 // LEDS DEL DISPLAY D4 -> D10
-#define UNIDADES 11
-#define DECENAS 12
-#define LED 13
+#define ALARM 11
+#define UNIDADES 12
+#define DECENAS 13
 #define POT A0
 #define PUSH_NEUTRO A1
 #define PUSH_DRIVE_MANUAL A2
