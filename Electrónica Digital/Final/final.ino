@@ -92,10 +92,13 @@ void loop() {
 	// condicionales
 	delay(500); // LECTURA DE ESTADOS
 	if (estado_neutro == 1) {
+		Serial.println("Neutro");
 		neutro();
 	} else if (estado_drive_manual == 1) {
+		Serial.println("Manual");
 		drive_manual();
 	} else if (estado_drive_auto == 1) {
+		Serial.println("Automatico");
 		drive_auto();
 	}
 	delay(100);
@@ -113,7 +116,7 @@ void neutro() {
 			estado = digitalRead(PUSH_DRIVE_AUTO);
 		}
 	}
-	
+	estado = 0;
 }
 
 void drive_manual() {
@@ -163,7 +166,7 @@ void drive_auto() {
 					delay(100);
 				}
 				Serial.println(d*10 + u);
-				analogWrite(PWM, (100*d) + (10*u));
+				analogWrite(PWM, ((100*d) + (10*u))/2);
 				if ((d*10 + u) >= 85) {
 					tone(ALARM,2000);
 				}
@@ -176,6 +179,8 @@ void drive_auto() {
 			}	
 		}
 	}
+	estado = 0;
+	analogWrite(PWM,0);
 }
 
 
