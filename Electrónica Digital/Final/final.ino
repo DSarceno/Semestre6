@@ -59,6 +59,7 @@ bool estado_neutro = 0;
 bool estado_drive_manual = 0;
 bool estado_drive_auto = 0;
 bool estado = 0;
+int pot = 0;
 
 
 // INCIALIZAMOS VOID SETUP
