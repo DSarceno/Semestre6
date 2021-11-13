@@ -220,26 +220,22 @@ void drive_auto() {
 					delay(100);
 					// cambio de estado
 					if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) { // Corta el bucle interno al tener una señal de un push
-						break;
+						d = 11;
+						u = 12;
+						c = 13;
+					}
+					// cambio de estado
+					if (digitalRead(PUSH_NEUTRO) == 1) {
+						estado = digitalRead(PUSH_NEUTRO);
+					} else if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
+						estado = digitalRead(PUSH_DRIVE_MANUAL);
 					}
 				}
 				analogWrite(PWM, ((100*d) + (10*u))/2);
 				if ((d*10 + u) >= 85) {
 					tone(ALARM,2000);
 				}
-				if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) { // Corta el bucle de las unidades al tener la señal de un push
-					break;
-				}
-			}
-			if (digitalRead(PUSH_NEUTRO) == 1 || digitalRead(PUSH_DRIVE_MANUAL) == 1) { // Corta el bucle de las decenas
-				break;
 			}	
-		}
-		// cambio de estado
-		if (digitalRead(PUSH_NEUTRO) == 1) {
-			estado = digitalRead(PUSH_NEUTRO);
-		} else if (digitalRead(PUSH_DRIVE_MANUAL) == 1) {
-			estado = digitalRead(PUSH_DRIVE_MANUAL);
 		}
 	}
 	estado = 0;
