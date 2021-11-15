@@ -30,7 +30,7 @@
 // PROGRAM
 // Definir leds del display de 7 segmentos
 
-#define DERECHA 2
+//#define DERECHA 2
 #define PWM 3
 // LEDS DEL DISPLAY D4 -> D10
 #define ALARM 11
@@ -67,7 +67,7 @@ int pot = 0;
 
 void setup() {
 	//pinmode(#de pin, tipo entrada o salida)
-	pinMode(DERECHA, OUTPUT);
+	//pinMode(DERECHA, OUTPUT);
 	pinMode(PWM, OUTPUT);
 	for (int l = 4; l < 11; l++){
 		pinMode(l, OUTPUT);
@@ -109,7 +109,7 @@ void loop() {
 // FUNCIONES A UTILIZAR
 
 void neutro() {
-	digitalWrite(DERECHA,0);
+	//digitalWrite(DERECHA,0);
 	while (estado == 0) {
 		// ESTADO NEUTRO MARCADO POR 00 EN LOS DISPLAY
 		digitalWrite(UNIDADES,HIGH);
@@ -131,7 +131,7 @@ void neutro() {
 }
 
 void drive_manual() {
-	digitalWrite(DERECHA,1);
+	//digitalWrite(DERECHA,1);
 	while (estado == 0) {
 			pot = analogRead(POT);
 			Serial.println(pot);
@@ -204,7 +204,7 @@ void drive_manual() {
 }
 
 void drive_auto() {
-	digitalWrite(DERECHA,1);
+	//digitalWrite(DERECHA,1);
 	while (estado == 0) {
 		for (int d = 0; d < 10; d++) { // Decenas
 			for (int u = 0; u < 10; u++) { // Unidades
