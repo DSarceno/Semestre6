@@ -1,0 +1,59 @@
+
+
+\section{Problema 1}
+Dada la fuerza gravitacional
+\begin{displaymath}
+	\vec{F} = -G\frac{Mm}{r^3} \vec{r} \nonumber
+\end{displaymath}
+y la condición $M \gg m$, se tiene:
+\begin{enumerate}[a)]
+	\item Dado que la fuerza (en coordenadas polares) se define como $-\pdv{U}{r} = F$ (Magnitud), se tiene que la energía potencial, al integrar, es.
+		$$\boxed{U = -\frac{GMm}{r}}$$
+	\item Dada la definición general de energía cinética para coordenadas ortogonales
+		$$T = \frac{1}{2} m\qty(h_1 ^2 \dot{q}_1 ^2 + h_2 ^2 \dot{q}_2 ^2 + h_3 ^2 \dot{q}_3 ^2 + \cdots)$$
+		Para coordenadas polares, se tiene los factores de escala $h_r = 1; \, h_\theta = r$, sustituyendo y sabiendo que $\dot{r} = 0$, entonces
+		$$\boxed{T = \frac{1}{2} m r\dot{\theta} ^2}$$
+	\item Dada la energía cinética y potencial del planeta, se tiene que el lagrangiano es:
+		$$\boxed{\lagran = \frac{1}{2} m r\dot{\theta} ^2 + \frac{GMm}{r}}$$
+	\item Para el hamiltoniano, se tienen los momentum conjugados:
+		$$
+			\left\{\begin{array}{c}
+				p_r = 0 \\
+				p_\theta = mr\dot{\theta}
+			\end{array}\right.
+		$$
+		Con esto, sustituyendo en la definición de hamiltoneano, se tiene:
+		$$\boxed{H = \frac{1}{2} m r\dot{\theta} ^2 - \frac{GMm}{r}}$$
+	\item Dado que se tienen únicamente dos grados de libertad, se tienen dos ecuaciones de Euler-Lagrange, de modo que
+		$$\pdv{\lagran}{r} + \dv{t} \pdv{\lagran}{\dot{r}} = 0 \, \rightarrow \, \boxed{r^2 \dot{\theta} ^2 = 2GM}$$,
+		para la otra coordenada
+		$$\pdv{\lagran}{\theta} + \dv{t} \pdv{\lagran}{\dot{\theta}} = 0 \, \rightarrow \, \boxed{\ddot{\theta} = 0}$$
+\end{enumerate}
+
+
+\section{Problema 2}
+Dado el lagrangiano y que se conseva dadas las transformaciones, entonces se tiene:
+\begin{displaymath}
+	\lagran \qty(t,q_1,\ldots ,q_n ,\dot{q}_1, \ldots ,\dot{q}_n) = \lagran \qty(t + \delta t,q_1 + \delta q_1,\ldots ,q_n + \delta q_n ,\dot{q}_1, \ldots ,\dot{q}_n)
+\end{displaymath}
+Esto implica que $\pdv{\lagran}{t} = 0$ y $\pdv{\lagran}{q_i} = 0$, dada la primera igualdad se tiene
+	$$\dv{H}{t} = -\pdv{\lagran}{t} = 0,$$
+el hamiltoniano se conserva; además, dada la segunda igualdad
+	$$\dv{t} \pdv{\lagran}{\dot{q}_i} = \dv{p_i}{t} = 0,$$
+por lo que, los momentum conjugados se conservan. Dadas ambas conclusiones, y que $\delta t$ y $\delta q_i$ no dependen del tiempo, se tiene claro, aplicando el Teorema de Noether, que
+	$$\dv{J}{t} = \dv{t} \qty[\sum_i ^n p_i \delta q_i - H\delta t] = 0;$$
+lo que, en efecto, implica que $\displaystyle\sum_i ^n p_i \delta q_i - H\delta t = \text{cte}$. 
+
+
+\section{Problema 3}
+
+
+
+
+\section{Problema 4}
+
+
+
+
+
+
