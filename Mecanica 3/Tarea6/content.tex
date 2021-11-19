@@ -23,7 +23,7 @@ y la condición $M \gg m$, se tiene:
 			\end{array}\right.
 		$$
 		Con esto, sustituyendo en la definición de hamiltoneano, se tiene:
-		$$\boxed{H = \frac{1}{2} m r\dot{\theta} ^2 - \frac{GMm}{r}}$$
+		$$\boxed{\mathcal{H} = \frac{1}{2} m r\dot{\theta} ^2 - \frac{GMm}{r}}$$
 	\item Dado que se tienen únicamente dos grados de libertad, se tienen dos ecuaciones de Euler-Lagrange, de modo que
 		$$\pdv{\lagran}{r} + \dv{t} \pdv{\lagran}{\dot{r}} = 0 \, \rightarrow \, \boxed{r^2 \dot{\theta} ^2 = 2GM}$$,
 		para la otra coordenada
@@ -37,12 +37,12 @@ Dado el lagrangiano y que se conseva dadas las transformaciones, entonces se tie
 	\lagran \qty(t,q_1,\ldots ,q_n ,\dot{q}_1, \ldots ,\dot{q}_n) = \lagran \qty(t + \delta t,q_1 + \delta q_1,\ldots ,q_n + \delta q_n ,\dot{q}_1, \ldots ,\dot{q}_n)
 \end{displaymath}
 Esto implica que $\pdv{\lagran}{t} = 0$ y $\pdv{\lagran}{q_i} = 0$, dada la primera igualdad se tiene
-	$$\dv{H}{t} = -\pdv{\lagran}{t} = 0,$$
+	$$\dv{\mathcal{H}}{t} = -\pdv{\lagran}{t} = 0,$$
 el hamiltoniano se conserva; además, dada la segunda igualdad
 	$$\dv{t} \pdv{\lagran}{\dot{q}_i} = \dv{p_i}{t} = 0,$$
 por lo que, los momentum conjugados se conservan. Dadas ambas conclusiones, y que $\delta t$ y $\delta q_i$ no dependen del tiempo, se tiene claro, aplicando el Teorema de Noether, que
-	$$\dv{J}{t} = \dv{t} \qty[\sum_i ^n p_i \delta q_i - H\delta t] = 0;$$
-lo que, en efecto, implica que $\displaystyle\sum_i ^n p_i \delta q_i - H\delta t = \text{cte}$. 
+	$$\dv{J}{t} = \dv{t} \qty[\sum_i ^n p_i \delta q_i - \mathcal{H}\delta t] = 0;$$
+lo que, en efecto, implica que $\displaystyle\sum_i ^n p_i \delta q_i - \mathcal{H}\delta t = \text{cte}$. 
 
 
 \section{Problema 3}
@@ -56,17 +56,64 @@ por lo tanto, $J = p_1 q_2 - p_2 q_1 = \text{cte}.$
 
 
 \section{Problema 4}
+Dadas las fuerzas involucradas $f_i = f^c _i + f^h _i + f^d _i$ con $N$ partículas y $k$ restricciones holonómicas. Con esto, tenemos, por definición
+	$$f_i - \dv{p_i}{t} = 0;$$
+con lo que
+\begin{displaymath}
+	\sum _{i=1} ^N \qty(f^c _i + f^h _i - \dv{p_i}{t}) \cdot \dd{r_i} = -\sum _{i=1} ^N f_i ^d \cdot \dd{r_i}. \numberthis \label{main}
+\end{displaymath}
+
+Por el principio del trabajo virutal, se tiene que $f^h _i \cdot \dd{r_i}$. Además, se tiene que $\dd{r_i}$ es virtual, por lo que respeta las restricciones holonómicas, entonces
+	$$\dd{r_i} = \sum _{j=1} ^n \pdv{r_i}{q_j} \dd{q_j} \, \Rightarrow \, \dv{r_i}{t} = \sum _{j=1}  \pdv{r_i}{q_j} \dot{q} _j.$$
+	
+También se tiene $\pdv{v_i}{\dot{q}_j} = \pdv{r_i}{q_j}$ y $T_i = \frac{p_i \cdot p_i}{2m_i}$. Ahora, se tienen dos relaciones matemáticas útiles:	
+	$$
+		\left\{\begin{array}{ccc}
+			\dv{t} \qty(p_i \cdot \pdv{r_i}{q_j}) = \dv{p_i}{t} \cdot \pdv{r_i}{q_j} + p_i \cdot \pdv{q_j} \qty(\dv{r_i}{t}) & \Rightarrow & \dv{p_i}{q_j} \cdot \pdv{r_i}{q_j} = \dv{t} \qty(p_i \cdot \pdv{v_i}{\dot{q}_j}) - p_i \cdot \pdv{v_i}{q_j} \\
+			\pdv{\dot{q}_j} \qty(p_i \cdot p_i) = 2p_i \cdot \pdv{p_i}{\dot{q}_j} & \text{lo que implica} & \pdv{T_i}{\dot{q}_j} = p_i \cdot \pdv{v_i}{\dot{q}_j};\, \pdv{T_i}{q_j} = p_i \cdot \pdv{v_i}{q_j}.
+		\end{array}\right.
+	$$
+
+Sustituyendo las dos últimas ecuaciones en la primera mostrada en la llave, se tiene que:
+	$$\dv{p_i}{q_j} \cdot \pdv{r_i}{q_j} = \dv{t} \pdv{T_i}{\dot{q}_j} - \pdv{T_i}{q_j},$$
+realizando la sumatoria respecto al número de partículas en el sistema
+	$$\sum _{i = 1} ^N \dv{t} \pdv{T_i}{\dot{q}_j} - \pdv{T_i}{q_j} = \dv{t} \pdv{T}{\dot{q}_j} - \pdv{T}{q_j},$$
+	
+entonces:
+\begin{displaymath}
+	\sum _{j=1} ^n \sum _{i=1} ^N \dv{p_i}{q_j} \cdot \pdv{r_i}{q_j} \dd{q_j} = \sum _{j=1} ^n \dv{t} \pdv{T}{\dot{q}_j} - \pdv{T}{q_j}. \numberthis \label{T}
+\end{displaymath}
 
 
+Ahora, para el término de las fuerzas conservativas, se tiene 
+	$$\sum _{i=1} ^N f_i ^c \cdot \dd{r_i} = \sum _{j=1} ^n \sum _{i=1} ^N f_i ^c \cdot \pdv{r_i}{q_j} \dd{q_j};$$
 
+además, se sabe que $f_i ^c = -\grad{U}$, lo que de forma expandida es
+	$$f_i ^c = -\pdv{U}{x_i} \vi - \pdv{U}{y_i} \vj - \pdv{U}{z_i} \vz$$
+y
+	$$\pdv{r_i}{q_j} = \pdv{x_i}{q_j} \vi + \pdv{y_i}{q_j} \vj + \pdv{z_i}{q_j} \vz .$$
 
+Por lo tanto, realizando la sumatoria se tiene
+	$$\sum _{i=1} ^N \qty(\pdv{U}{x_i} \pdv{x_i}{q_j} + \pdv{U}{y_i} \pdv{y_i}{q_j} + \pdv{U}{z_i} \pdv{z_i}{q_j}) \dd{q_j} = \pdv{U}{q_j} \dd{q_j},$$
 
+por lo tanto,
+	$$\sum _{i=1} ^N f_i ^c \cdot \dd{r_i} = -\sum _{j=1} ^n \pdv{U}{q_j} \dd{q_j},$$
 
+como el potencial no depende de $\dot{q}_j$ entonces $\pdv{U}{\dot{q}_j} = 0$, con esto y la ecuación \eqref{T}, se tiene ($\lagran = T-U$)
+\begin{displaymath}
+	\sum_{i=1} ^N \qty(f_i ^c - \dv{p_i}{t}) \cdot \dd{r_i} = \sum _{j=1} ^n \qty(\dv{t} \pdv{\lagran}{\dot{q}_j} - \pdv{\lagran}{q_j}) \dd{q_j}. \numberthis \label{Lagrange}
+\end{displaymath}
 
+Para las fuerzas disipativas se tiene que el producto escalar entre ellas y el diferencial de posición siempre es negativo, por lo que se dicha fuerza se tomará directamente positiva y se obviará el signo negativo. Dado esto, se tiene que
+\begin{displaymath}
+	\sum _{i=1} ^N f_i ^d \cdot \dd{r_i} = \sum _{j=1} ^n \sum _{i=1} ^N f_i ^d \cdot \pdv{r_i}{q_j} \dd{q_j}, \numberthis \label{disipative}
+\end{displaymath}
 
+igualando \eqref{Lagrange} y \eqref{disipative} debido a la ecuación \eqref{main}, se tiene que
+	$$\sum _{j=1} ^n \qty(\dv{t} \pdv{\lagran}{\dot{q}_j} - \pdv{\lagran}{q_j}) \dd{q_j} = \sum _{j=1} ^n \qty[ \sum _{i=1} ^N f_i ^d \cdot \pdv{r_i}{q_j} ] \dd{q_j},$$
 
-
-
+dada la igualdad, se obvia la sumatoria respecto a $j$, entonces
+	$$\boxed{\dv{t} \pdv{\lagran}{\dot{q}_j} - \pdv{\lagran}{q_j} = Q_j ; \quad Q_j = \sum _{i=1} ^N f_i ^d \cdot \pdv{r_i}{q_j}}$$
 
 
 
